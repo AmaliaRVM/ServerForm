@@ -29,7 +29,7 @@ app.get('/api/form', (req,res)=>{
             email: ${req.query.email}
         </div>
         `
-        let transporter = nodemailer.createTestAccount({
+        let transporter = nodemailer.createTransport({
             host: 'smtp.gmail.com',
             port: 465,
             auth: {
