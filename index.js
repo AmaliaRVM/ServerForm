@@ -21,13 +21,15 @@ next();
 });
 
 app.get('/api/form', (req,res)=>{
+    console.log(req.query)
     nodemailer.createTestAccount((err,account)=>{
+        console.log(err, account)
         const htmlMail = `
-        <div>
-            firstName: ${req.query.firstName}
-            message: ${req.query.message}
-            email: ${req.query.email}
-        </div>
+            <div>
+                firstName: ${req.query.firstName}
+                message: ${req.query.message}
+                email: ${req.query.email}
+            </div>
         `
         let transporter = nodemailer.createTransport({
             host: 'smtp.gmail.com',
@@ -54,6 +56,7 @@ app.get('/api/form', (req,res)=>{
             }
         })
     })
+    console.log('send')
     res.send('/')
 })
 
